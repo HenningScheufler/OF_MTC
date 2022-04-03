@@ -1,0 +1,34 @@
+cellCuts/cutCell/cutCell.C
+cellCuts/cutCell/cutCellPLIC.C
+cellCuts/cutCell/cutCellIso.C
+cellCuts/cutCell/cutCellImpFunc.C
+cellCuts/cutFace/cutFace.C
+cellCuts/cutFace/cutFacePLIC.C
+cellCuts/cutFace/cutFaceAdvect.C
+cellCuts/cutFace/cutFaceIso.C
+cellCuts/cutFace/cutFaceImpFunc.C
+surfaceIterators/surfaceIteratorPLIC.C
+surfaceIterators/surfaceIteratorIso.C
+
+multiDimPolyFitter/multiDimPolyFunctions/paraboloid.C
+multiDimPolyFitter/leastSquareFitParabolid.C
+
+reconstructedDistanceFunction/reconstructedDistanceFunction.C
+markInterfaceRegion/markInterfaceRegion.C
+
+/* Run-time selectable implicitFunctions */
+reconstructionSchemes/reconstructionSchemesNew.C
+reconstructionSchemes/reconstructionSchemes.C
+reconstructionSchemes/isoSchemes/isoAlpha/isoAlpha.C
+reconstructionSchemes/isoSchemes/isoSurface/isoSurface.C
+reconstructionSchemes/plicSchemes/gradAlpha/gradAlpha.C
+reconstructionSchemes/plicSchemes/plicRDF/plicRDF.C
+
+/* Run-time selectable implicitFunctions */
+advectionSchemes/newAdvectionSchemes.C
+advectionSchemes/advectionSchemes.C
+advectionSchemes/isoAdvection/isoAdvection.C
+advectionSchemes/geoAdvection/geoAdvection.C
+advectionSchemes/MULES/MULESScheme.C
+
+LIB = $(FOAM_USER_LIBBIN)/libinterfaceCapturing
