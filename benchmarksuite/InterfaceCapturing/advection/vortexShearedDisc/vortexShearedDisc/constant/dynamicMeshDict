@@ -1,0 +1,45 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1812                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version         2;
+    format          ascii;
+    class           dictionary;
+    location        "constant";
+    object          dynamicMeshDict;
+}
+
+dynamicFvMesh   staticFvMesh;
+
+enableBalancing true;
+
+allowableImbalance 0.1;
+
+adaptCriteria
+{
+    type            fieldBounds;
+    fieldName       alpha.water;
+    lowerBound      0.001;
+    upperBound      0.999;
+    nLayer          4;
+}
+
+refineInterval  5;
+
+nBufferLayers   1;
+
+maxRefinement   2;
+
+maxCells        1500000;
+
+correctFluxes   ( ( phi none ) ( nHatf none ) ( rhoPhi none ) ( alphaPhi0.water none ) ( alphaPhi0 none ) ( alphaPhiUn none ) ( ghf none ) ( phi0 none ) ( dVf_ none ) ( alphaPhi_ none ) );
+
+dumpLevel       true;
+
+
+// ************************************************************************* //
