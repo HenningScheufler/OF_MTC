@@ -25,32 +25,21 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef makeInterfaceCapturingSchemeTypes_H
-#define makeInterfaceCapturingSchemeTypes_H
+#include "makeInterfaceCapturingSchemeTypes.H"
 
-#include "addToRunTimeSelectionTable.H"
-#include "interfaceCapturingSchemes.H"
-#include "dictionary.H"
+#include "isoTestAdvection.H"
+#include "isoTestAlpha.H"
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#define makeInterfaceCapturingSchemeTypes(ICType,advectType, reconType)     \
-                                                                            \
-    namespace Foam                                                          \
-    {                                                                       \
-        typedef Foam::advection::advectType ICType##advectType##reconType;  \
-                                                                            \
-                                                                            \
-        addNamedToRunTimeSelectionTable                                     \
-        (                                                                   \
-            interfaceCapturingSchemes,                                      \
-            ICType##advectType##reconType,                                  \
-            dictionary,                                                     \
-            ICType##advectType##reconType                                   \
-        );                                                                  \
-    }
+makeInterfaceCapturingSchemeTypes
+(
+    geometric,
+    isoTestAdvection,
+    isoTestAlpha
+);
 
-#endif
+
 
 // ************************************************************************* //

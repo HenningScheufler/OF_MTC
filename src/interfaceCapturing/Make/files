@@ -40,5 +40,9 @@ interfaceCapturingSchemes/interfaceCapturingSchemes.C
 
 interfaceCapturingSchemes/geometric/newGeoInterfaceCapturingSchemes.C
 interfaceCapturingSchemes/geometric/geoInterfaceCapturingSchemes.C
+interfaceCapturingSchemes/geometric/isoTestAdvection/isoTestAdvection.C
+interfaceCapturingSchemes/reconstructionSchemes/isoTestAlpha.C
+
+interfaceCapturingSchemes/interfaceCapturingMethods.C
 
 LIB = $(FOAM_USER_LIBBIN)/libinterfaceCapturing
