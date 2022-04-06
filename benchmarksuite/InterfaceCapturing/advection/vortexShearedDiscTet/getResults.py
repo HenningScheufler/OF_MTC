@@ -8,7 +8,7 @@ import seaborn as sns
 sns.set_style("ticks")
 
 caseStructure = [['isoAlpha', 'plicRDF','MULES'],
-        ['x32', 'x64', 'x128', 'x256', 'x512']]
+                 ['x32', 'x64', 'x128', 'x256', 'x512']]
 
 baseCase = 'Cases'
 solutionDir = 'volumeFractionError/0'
@@ -24,9 +24,14 @@ error = error.rename(columns={1: "E1", 2: "Emass", 3: "Ebound", 8 : "delta"}) # 
 error["nCells"] = 1/error["delta"] # domain size is 1
 error['Res'] = error['Res'].str.replace('x', '')
 error['Res'] = error['Res'].apply(pd.to_numeric)
-# error = error.set_index(["var_0","var_1","var_2"])
+
 print("error",error)
+error.to_csv("error.csv")
 sns.lineplot(x="Res", y="E1",markers=True,hue="Model",style="Model",data=error)
 plt.xscale('log')
 plt.yscale('log')
-plt.show()
+plt.savefig("error.png")
+# plt.show()
+
+
+
