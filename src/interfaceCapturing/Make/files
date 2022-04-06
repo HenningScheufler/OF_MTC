@@ -31,4 +31,14 @@ advectionSchemes/isoAdvection/isoAdvection.C
 advectionSchemes/geoAdvection/geoAdvection.C
 advectionSchemes/MULES/MULESScheme.C
 
+/* Run-time selectable implicitFunctions */
+interfaceCapturingSchemes/newInterfaceCapturingSchemes.C
+interfaceCapturingSchemes/interfaceCapturingSchemes.C
+/* advectionSchemes/isoAdvection/isoAdvection.C */
+/* advectionSchemes/geoAdvection/geoAdvection.C */
+/* advectionSchemes/MULES/MULESScheme.C */
+
+interfaceCapturingSchemes/geometric/newGeoInterfaceCapturingSchemes.C
+interfaceCapturingSchemes/geometric/geoInterfaceCapturingSchemes.C
+
 LIB = $(FOAM_USER_LIBBIN)/libinterfaceCapturing
