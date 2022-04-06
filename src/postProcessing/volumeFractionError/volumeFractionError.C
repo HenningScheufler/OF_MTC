@@ -39,7 +39,6 @@ namespace functionObjects
 }
 }
 
-
 // * * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * //
 
 void Foam::functionObjects::volumeFractionError::writeFileHeader(Ostream& os) const
@@ -59,7 +58,6 @@ void Foam::functionObjects::volumeFractionError::writeFileHeader(Ostream& os) co
 }
 
 
-
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
 Foam::functionObjects::volumeFractionError::volumeFractionError
@@ -76,9 +74,6 @@ Foam::functionObjects::volumeFractionError::volumeFractionError
     initMass_(0),
     initCentre_(dict.get<vector>("origin"))
 {
-
-
-
     read(dict);
 
     writeFileHeader(file());
@@ -113,12 +108,10 @@ bool Foam::functionObjects::volumeFractionError::read(const dictionary& dict)
 
     scalarField f(mesh_.nPoints(),0.0);
 
-
     forAll(f,pI)
     {
         f[pI] =  func->value(mesh_.points()[pI]);
     }
-
 
     cutCellIso cutCell(mesh_,f);
 
@@ -174,14 +167,13 @@ bool Foam::functionObjects::volumeFractionError::execute()
 
 bool Foam::functionObjects::volumeFractionError::write()
 {
-
     const volScalarField& alpha = lookupObject<volScalarField>(Field_);
 
     vector centre = dict_.get<vector>("origin");
 
     const volVectorField& U = mesh_.lookupObject<volVectorField>("U");
 
-    volScalarField magU ("magU",mag(U));
+    volScalarField magU("magU",mag(U));
 
     scalar maxMagU = max(magU).value();
     scalar minMagU = min(magU).value();
@@ -194,15 +186,9 @@ bool Foam::functionObjects::volumeFractionError::write()
     if((maxMagU - minMagU) <= SMALL )
     {
         U0 = U[0];
-
     }
 
     vector centrePos = initCentre_ + U0*mesh_.time().value();
-
-
-
-
-
 
     dict_.set<vector>("origin",centrePos);
 
@@ -212,8 +198,6 @@ bool Foam::functionObjects::volumeFractionError::write()
            dict_
     );
 
-
-
     scalarField f(mesh_.nPoints(),0.0);
 
     forAll(f,pI)
@@ -221,8 +205,7 @@ bool Foam::functionObjects::volumeFractionError::write()
         f[pI] =  func->value(mesh_.points()[pI]);
     }
 
-
-     cutCellIso cutCell(mesh_,f); // changes f
+    cutCellIso cutCell(mesh_,f); // changes f
 
     volScalarField alphaExact
     (
@@ -238,9 +221,6 @@ bool Foam::functionObjects::volumeFractionError::write()
           dimensionedScalar("0", dimless, 0),
           "calculated"
     );
-
-//    cutCellImpFunc cutCell(mesh_,f,func); // changes f
-
 
     forAll(alphaExact,cellI)
     {
@@ -261,7 +241,6 @@ bool Foam::functionObjects::volumeFractionError::write()
 
     }
 
-
     scalar E1 = fvc::domainIntegrate(mag(alpha.internalField() - alphaExact.internalField())).value();
     scalar Emass = mag(fvc::domainIntegrate(alpha.internalField()).value() - initMass_);
 
@@ -269,10 +248,6 @@ bool Foam::functionObjects::volumeFractionError::write()
     scalar Ebound = mag(max(-min(fluidVol),max(fluidVol-1)));
 
     reduce(Ebound,maxOp<scalar>());
-
-
-
-
 
     const advectionSchemes& advection = mesh_.lookupObjectRef<advectionSchemes>("advectionSchemes");
 
@@ -282,10 +257,6 @@ bool Foam::functionObjects::volumeFractionError::write()
     scalar length = average(mag(mesh_.delta())()).value();
     scalar nCells = mesh_.nCells();
     scalar avgVol = average(mesh_.V()).value();
-
-
-//    Log << type() << " " << volumeFractionError.name() << " is " << intValue << endl;
-
 
     if (Pstream::master())
     {
@@ -302,8 +273,6 @@ bool Foam::functionObjects::volumeFractionError::write()
             << token::TAB << avgVol
             << endl;
     }
-
-
 
     return true;
 }

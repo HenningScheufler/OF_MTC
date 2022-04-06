@@ -29,10 +29,7 @@ EXE_INC = \
     -I$(LIB_SRC)/functionObjects/field/lnInclude \
     -I$(LIB_SRC)/transportModels/twoPhaseMixture/lnInclude \
     -I$(LIB_SRC)/transportModels/interfaceProperties/lnInclude \
-    -I../interfaceCapturing/lnInclude \
-    -I../phaseChange/lnInclude \
-    -I../thermoDynamics/twoPhaseModelThermo/lnInclude \
-    -I../turbulence/interfaceCapturingphaseCompressibleTurbulenceModels/lnInclude
+    -I../interfaceCapturing/lnInclude
 
 LIB_LIBS = \
     -lalphaFieldFunctions \
@@ -56,6 +53,4 @@ LIB_LIBS = \
     -lsolidThermo \
     -ltwoPhaseMixture \
     -L$(FOAM_USER_LIBBIN) \
-    -linterfaceCapturing \
-    -lphaseChange \
-    -ltwoPhaseModelThermo
+    -linterfaceCapturing
