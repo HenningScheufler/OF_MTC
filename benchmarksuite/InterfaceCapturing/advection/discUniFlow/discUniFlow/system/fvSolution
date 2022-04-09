@@ -25,7 +25,7 @@ solvers
         nAlphaSubCycles             $SUBCYL;
         cAlpha                      1;
 
-        advectionScheme             $ADVECTSCHEME;
+        interfaceCapturingScheme    $ADVECTSCHEME;
         reconstructionScheme        $RECONSCHEME;
 
 
