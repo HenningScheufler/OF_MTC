@@ -26,6 +26,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "makeInterfaceCapturingSchemeTypes.H"
+#include "makeGeoInterfaceCapturingSchemeTypes.H"
 
 #include "isoTestAdvection.H"
 #include "isoTestAlpha.H"
@@ -33,13 +34,18 @@ License
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-makeInterfaceCapturingSchemeTypes
+// makeInterfaceCapturingSchemeTypes
+// (
+//     geometric,
+//     isoTestAdvection,
+//     isoTestAlpha
+// );
+
+makeGeoInterfaceCapturingSchemeTypes
 (
     geometric,
     isoTestAdvection,
     isoTestAlpha
 );
-
-
 
 // ************************************************************************* //

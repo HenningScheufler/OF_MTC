@@ -80,8 +80,9 @@ namespace advection
                         Class isoTestAdvection Declaration
 \*---------------------------------------------------------------------------*/
 
+template<class reconstructionScheme>
 class isoTestAdvection
-    : public geoInterfaceCapturingSchemes
+    : public geoInterfaceCapturingSchemes<reconstructionScheme>
 {
     // Private data types
 
@@ -98,7 +99,7 @@ class isoTestAdvection
 public:
 
     //- Runtime type information
-    TypeName("isoTestAdvection");
+    ClassName("isoTestAdvection");
 
     //- Constructors
 

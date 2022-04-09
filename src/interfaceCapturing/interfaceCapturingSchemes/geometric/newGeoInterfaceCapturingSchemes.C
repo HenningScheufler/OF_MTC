@@ -25,15 +25,15 @@ License
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+template<class reconstructionScheme>
 Foam::autoPtr<Foam::interfaceCapturingSchemes>
-Foam::geoInterfaceCapturingSchemes::New
+Foam::geoInterfaceCapturingSchemes<reconstructionScheme>::New
 (
         volScalarField& alpha1,
         const surfaceScalarField& phi,
         const volVectorField& U
 )
 {
-
     word geoInterfaceCapturingSchemesTypeName
     (
         IOdictionary

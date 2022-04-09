@@ -25,8 +25,8 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef makeInterfaceCapturingSchemeTypes_H
-#define makeInterfaceCapturingSchemeTypes_H
+#ifndef makeGeoInterfaceCapturingSchemeTypes_H
+#define makeGeoInterfaceCapturingSchemeTypes_H
 
 #include "addToRunTimeSelectionTable.H"
 #include "interfaceCapturingSchemes.H"
@@ -35,11 +35,14 @@ License
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#define makeInterfaceCapturingSchemeTypes(ICType,advectType, reconType)     \
+#define makeGeoInterfaceCapturingSchemeTypes(ICType,advectType, reconType)  \
                                                                             \
     namespace Foam                                                          \
     {                                                                       \
         typedef Foam::advection::advectType                                 \
+            <                                                               \
+                Foam::reconstruction::reconType                             \
+            >                                                               \
             ICType##_##advectType##_##reconType;                            \
                                                                             \
                                                                             \

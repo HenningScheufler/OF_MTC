@@ -16,19 +16,19 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::gradAlpha
+    Foam::brackbill
 
 Description
     estimates the curvature from the volume fraction field similiar to the
-    mode of Brackbill et al.
+    mode of brackbill et al.
 
 SourceFiles
-    gradAlpha.C
+    brackbill.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef gradAlpha_H
-#define gradAlpha_H
+#ifndef brackbill_H
+#define brackbill_H
 
 #include "typeInfo.H"
 #include "volFields.H"
@@ -46,10 +46,10 @@ namespace Foam
 {
 
 /*---------------------------------------------------------------------------*\
-                Class gradAlpha Declaration
+                Class brackbill Declaration
 \*---------------------------------------------------------------------------*/
 
-class gradAlpha
+class brackbill
     : public surfaceTensionForceModel
 {
 
@@ -64,26 +64,26 @@ private:
         virtual void correctContactAngle
         (
             surfaceVectorField::Boundary& nHat,
-            surfaceVectorField::Boundary& gradAlphaf
+            surfaceVectorField::Boundary& brackbillf
         );
 
 
         //- Disallow copy construct
-        gradAlpha(const gradAlpha&);
+        brackbill(const brackbill&);
 
         //- Disallow default bitwise assignment
-        void operator=(const gradAlpha&);
+        void operator=(const brackbill&);
 
 public:
 
     //- Runtime type information
-    TypeName("gradAlpha");
+    TypeName("Brackbill");
 
 
     // Constructors
 
         //- Construct from components
-        gradAlpha
+        brackbill
         (
             const dictionary& dict,
             const volScalarField& alpha1,
@@ -93,7 +93,7 @@ public:
 
 
     //- Destructor
-    virtual ~gradAlpha()
+    virtual ~brackbill()
     {}
 
     virtual void correct();

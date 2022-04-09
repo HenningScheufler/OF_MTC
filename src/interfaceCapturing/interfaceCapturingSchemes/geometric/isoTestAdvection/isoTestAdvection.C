@@ -45,25 +45,26 @@ License
 
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
 
-namespace Foam
-{
-namespace advection
-{
-    defineTypeNameAndDebug(isoTestAdvection, 0);
-    // addToRunTimeSelectionTable(advectionSchemes,isoTestAdvection, dictionary);
-}
-}
+// namespace Foam
+// {
+// namespace advection
+// {
+//     defineTypeNameAndDebug(isoTestAdvection, 0);
+//     addToRunTimeSelectionTable(advectionSchemes,isoTestAdvection, dictionary);
+// }
+// }
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::advection::isoTestAdvection::isoTestAdvection
+template<class reconstructionScheme>
+Foam::advection::isoTestAdvection<reconstructionScheme>::isoTestAdvection
 (
     volScalarField& alpha1,
     const surfaceScalarField& phi,
     const volVectorField& U
 )
 :
-    geoInterfaceCapturingSchemes
+    geoInterfaceCapturingSchemes<reconstructionScheme>
     (
         alpha1,
         phi,

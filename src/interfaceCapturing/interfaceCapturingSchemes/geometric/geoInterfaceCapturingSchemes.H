@@ -53,7 +53,7 @@ namespace Foam
 /*---------------------------------------------------------------------------*\
                 Class geoInterfaceCapturingSchemes Declaration
 \*---------------------------------------------------------------------------*/
-
+template<class reconstructionScheme>
 class geoInterfaceCapturingSchemes
     : public interfaceCapturingSchemes
 {

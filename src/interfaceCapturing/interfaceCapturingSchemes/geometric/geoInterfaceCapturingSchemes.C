@@ -27,7 +27,8 @@ License
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::geoInterfaceCapturingSchemes::geoInterfaceCapturingSchemes
+template<class reconstructionScheme>
+Foam::geoInterfaceCapturingSchemes<reconstructionScheme>::geoInterfaceCapturingSchemes
 (
         volScalarField& alpha1,
         const surfaceScalarField& phi,
@@ -42,7 +43,8 @@ Foam::geoInterfaceCapturingSchemes::geoInterfaceCapturingSchemes
 
 // * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
-Foam::geoInterfaceCapturingSchemes::~geoInterfaceCapturingSchemes()
+template<class reconstructionScheme>
+Foam::geoInterfaceCapturingSchemes<reconstructionScheme>::~geoInterfaceCapturingSchemes()
 {}
 
 // * * * * * * * * * * * * * * Public Access Member Functions  * * * * * * * * * * * * * * //

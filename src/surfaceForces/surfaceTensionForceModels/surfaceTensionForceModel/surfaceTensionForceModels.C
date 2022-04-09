@@ -18,7 +18,8 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "surfaceTensionForceModel.H"
-
+#include "interfaceCapturingSchemes.H"
+#include "advectionSchemes.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -43,6 +44,9 @@ Foam::surfaceTensionForceModel::New
 
     Info<< "Selecting surfaceTension model "
         << surfaceTensionForceModelTypeName << endl;
+
+    wordList interfaceCapturingMethod = alpha1.mesh().names<advectionSchemes>();
+    Info << "interfaceCapturingMethod "  << interfaceCapturingMethod << endl;
 
     auto* ctorPtr = componentsConstructorTable(surfaceTensionForceModelTypeName);
 
