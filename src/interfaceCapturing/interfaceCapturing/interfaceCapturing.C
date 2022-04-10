@@ -44,7 +44,7 @@ Foam::interfaceCapturing::interfaceCapturing
   (
       IOobject
       (
-          "interfaceCapturingScheme",
+          interfaceCapturing::typeName,
           alpha1.time().constant(),
           alpha1.db(),
           IOobject::NO_READ,
