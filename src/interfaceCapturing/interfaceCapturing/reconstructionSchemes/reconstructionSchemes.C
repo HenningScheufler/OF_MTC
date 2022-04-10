@@ -30,11 +30,10 @@ License
 
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
 
-// namespace Foam
-// {
-//     defineTypeNameAndDebug(reconstructionSchemes, 0);
-//     defineRunTimeSelectionTable(reconstructionSchemes, components);
-// }
+namespace Foam
+{
+    defineTypeNameAndDebug(reconstructionSchemes, 0);
+}
 
 
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * //

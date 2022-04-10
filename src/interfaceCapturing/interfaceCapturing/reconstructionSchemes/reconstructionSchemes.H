@@ -104,7 +104,7 @@ protected:
 public:
     // Constructors
 
-        // TypeName("reconstructionSchemes");
+        TypeName("reconstructionSchemes");
 
         //- Construct from components
         reconstructionSchemes
@@ -133,8 +133,6 @@ public:
         {
             return reconstructionSchemesCoeffs_;
         }
-
-
 
         //- const-Reference to interface normals
         const volVectorField& normal() const
@@ -172,6 +170,11 @@ public:
             return interfaceLabels_;
         }
 
+        //- Reconstruct interface
+        virtual void reconstruct(bool forceUpdate = true) = 0;
+
+        //- Map VoF Field in case of refinement
+        virtual void mapAlphaField() const = 0;
 
 };
 
@@ -180,9 +183,7 @@ public:
 
 } // End namespace Foam
 
-#ifdef NoRepository
-#   include "reconstructionSchemes.C"
-#endif
+
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #endif

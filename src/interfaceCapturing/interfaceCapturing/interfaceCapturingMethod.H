@@ -112,7 +112,12 @@ public:
             const volScalarField::Internal& Su
         ) = 0;
 
-        const reconScheme& surf() const
+        virtual const reconScheme& surf() const
+        {
+            return surf_;
+        }
+
+        virtual reconScheme& surf()
         {
             return surf_;
         }

@@ -41,7 +41,7 @@ SourceFiles
 #include "autoPtr.H"
 #include "IOdictionary.H"
 
-// #include "reconstructionSchemes.H"
+#include "reconstructionSchemes.H"
 
 
 
@@ -179,9 +179,9 @@ public:
             return alphaPhi_;
         }
 
-        // virtual const reconstructionSchemes& surf() const  = 0;
+        virtual const reconstructionSchemes& surf() const  = 0;
 
-        // virtual reconstructionSchemes& surf() = 0;
+        virtual reconstructionSchemes& surf() = 0;
 
 };
 

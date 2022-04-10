@@ -105,7 +105,7 @@ public:
 
         virtual void reconstruct(bool forceUpdate = true);
 
-        virtual void mapAlphaField()
+        virtual void mapAlphaField() const
         {
             // do nothing;
         }

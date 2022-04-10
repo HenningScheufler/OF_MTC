@@ -19,6 +19,7 @@ markInterfaceRegion/markInterfaceRegion.C
 /* Run-time selectable interfaceCapturing */
 interfaceCapturing/newInterfaceCapturing.C
 interfaceCapturing/interfaceCapturing.C
+interfaceCapturing/reconstructionSchemes/reconstructionSchemes.C
 
 interfaceCapturing/interfaceCapturingMethods.C
 
