@@ -5,7 +5,7 @@
     \\  /    A nd           | www.openfoam.com
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
-    Copyright (C) 2017 OpenCFD Ltd.
+    Copyright (C) 2019-2020 DLR
 -------------------------------------------------------------------------------
 License
     This file is part of OpenFOAM.
@@ -25,43 +25,47 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "makeInterfaceCapturingMethodTypes.H"
-
-#include "isoAdvection.H"
-#include "MULESScheme.H"
-
-#include "plicRDF.H"
-#include "gradAlpha.H"
-#include "isoAlpha.H"
-#include "isoSurface.H"
-
+#include "reconstructionSchemes.H"
+#include "messageStream.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-makeInterfaceCapturingMethodTypes
+Foam::autoPtr<Foam::reconstructionSchemes>
+Foam::reconstructionSchemes::New
 (
-    isoAdvection,
-    gradAlpha
-);
+    volScalarField& alpha1,
+    const surfaceScalarField& phi,
+    const volVectorField& U,
+    const dictionary& dict
+)
+{
+    word schemeType("isoAlpha");
 
+    if (!dict.readIfPresent("reconstructionScheme", schemeType))
+    {
+        Warning
+            << "Entry '"
+            << "reconstructionScheme" << "' not found in dictionary "
+            << dict.name() << nl
+            << "using default" << nl;
+    }
 
-makeInterfaceCapturingMethodTypes
-(
-    isoAdvection,
-    plicRDF
-);
+    Info<< "Selecting reconstructionScheme: " << schemeType << endl;
 
-makeInterfaceCapturingMethodTypes
-(
-    isoAdvection,
-    isoAlpha
-);
+    auto cstrIter = componentsConstructorTablePtr_->cfind(schemeType);
 
+    if (!cstrIter.found())
+    {
+        FatalErrorInFunction
+            << "Unknown reconstructionSchemes type "
+            << schemeType << nl << nl
+            << "Valid  reconstructionSchemess are : " << nl
+            << componentsConstructorTablePtr_->sortedToc()
+            << exit(FatalError);
+    }
 
-makeInterfaceCapturingMethodTypes
-(
-    MULESScheme,
-    isoSurface
-);
+    return autoPtr<reconstructionSchemes>(cstrIter()(alpha1, phi, U, dict));
+}
+
 
 // ************************************************************************* //

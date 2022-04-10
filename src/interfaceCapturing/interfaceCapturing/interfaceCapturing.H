@@ -41,6 +41,8 @@ SourceFiles
 #include "autoPtr.H"
 #include "IOdictionary.H"
 
+// #include "reconstructionSchemes.H"
+
 
 
 
@@ -58,9 +60,9 @@ class interfaceCapturing
 {
 
 private:
-
-    //-
+        //-
         dictionary interfaceCapturingCoeffs_;
+
 
 protected:
 
@@ -77,6 +79,8 @@ protected:
         surfaceScalarField alphaPhi_;
 
     // Private Member Functions
+
+private:
 
         //- Disallow copy construct
         interfaceCapturing(const interfaceCapturing&);
@@ -174,6 +178,10 @@ public:
         {
             return alphaPhi_;
         }
+
+        // virtual const reconstructionSchemes& surf() const  = 0;
+
+        // virtual reconstructionSchemes& surf() = 0;
 
 };
 

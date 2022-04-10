@@ -25,7 +25,6 @@ License
 
 
 #include "MULESScheme.H"
-#include "addToRunTimeSelectionTable.H"
 #include "fvCFD.H"
 #include "CMULES.H"
 #include "EulerDdtScheme.H"
@@ -38,19 +37,9 @@ License
 
 
 
-// * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
 
-namespace Foam
-{
-namespace advection
-{
-    defineTypeNameAndDebug(MULESScheme, 0);
-    addToRunTimeSelectionTable(advectionSchemes,MULESScheme, dictionary);
-}
-}
-
-
-void Foam::advection::MULESScheme::updateNHatf()
+template<class reconstructionScheme>
+void Foam::advection::MULESScheme<reconstructionScheme>::updateNHatf()
 {
     // Cell gradient of alpha
     const volVectorField gradAlpha(fvc::grad(alpha1_, "nHat"));
@@ -71,16 +60,16 @@ void Foam::advection::MULESScheme::updateNHatf()
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::advection::MULESScheme::MULESScheme
+template<class reconstructionScheme>
+Foam::advection::MULESScheme<reconstructionScheme>::MULESScheme
 (
         volScalarField& alpha1,
         const surfaceScalarField& phi,
         const volVectorField& U
 )
 :
-    advectionSchemes
+    interfaceCapturingMethod<reconstructionScheme>
     (
-        typeName,
         alpha1,
         phi,
         U
@@ -171,15 +160,17 @@ Foam::advection::MULESScheme::MULESScheme
 
 // * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
-Foam::advection::MULESScheme::~MULESScheme()
+template<class reconstructionScheme>
+Foam::advection::MULESScheme<reconstructionScheme>::~MULESScheme()
 {}
 
 // * * * * * * * * * * * * * * Protected Access Member Functions  * * * * * * * * * * * * * * //
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
 
+template<class reconstructionScheme>
 template<class SpType, class SuType>
-void Foam::advection::MULESScheme::advect(const SpType& Sp, const SuType& Su)
+void Foam::advection::MULESScheme<reconstructionScheme>::advect(const SpType& Sp, const SuType& Su)
 {
     updateNHatf();
 

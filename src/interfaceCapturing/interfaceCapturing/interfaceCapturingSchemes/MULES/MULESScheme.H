@@ -36,7 +36,7 @@ SourceFiles
 #define MULESScheme_H
 
 #include "typeInfo.H"
-#include "advectionSchemes.H"
+#include "interfaceCapturingMethod.H"
 #include "volFields.H"
 #include "volFieldsFwd.H"
 #include "dimensionedScalar.H"
@@ -59,11 +59,19 @@ namespace advection
                 Class MULESScheme Declaration
 \*---------------------------------------------------------------------------*/
 
+template<class reconstructionScheme>
 class MULESScheme
-    : public advectionSchemes
+    : public interfaceCapturingMethod<reconstructionScheme>
 {
 
 private:
+
+        using interfaceCapturing::alpha1_;
+        using interfaceCapturing::phi_;
+        using interfaceCapturing::alphaPhi_;
+        using interfaceCapturing::modelDict;
+        using interfaceCapturing::U_;
+        using interfaceCapturingMethod<reconstructionScheme>::surf_;
 
         //- Reference to mesh
         const fvMesh& mesh_;
@@ -173,6 +181,10 @@ public:
 } // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+#ifdef NoRepository
+#   include "MULESScheme.C"
+#endif
+
 
 #endif
 

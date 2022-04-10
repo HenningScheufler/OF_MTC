@@ -36,13 +36,8 @@ License
 #include "upwind.H"
 #include "cellSet.H"
 #include "meshTools.H"
-#include "OBJstream.H"
 #include "syncTools.H"
 #include "profiling.H"
-
-
-
-// * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
 
 
 
