@@ -35,13 +35,13 @@ License
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#define makeInterfaceCapturingMethodTypes(advectType, reconType)         \
+#define makeInterfaceCapturingMethodTypes(advectType, reconType)            \
                                                                             \
     namespace Foam                                                          \
     {                                                                       \
         typedef Foam::advection::advectType                                 \
             <                                                               \
-                Foam::reconstruction::reconType                             \
+                Foam::interface::reconType                                  \
             >                                                               \
             advectType##_##reconType;                                       \
                                                                             \

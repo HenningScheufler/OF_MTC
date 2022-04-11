@@ -64,7 +64,7 @@ SourceFiles
 #include "surfaceFields.H"
 #include "fvc.H"
 #include "className.H"
-#include "reconstructionSchemes.H"
+#include "interfaceRepresentation.H"
 #include "cutFaceAdvect.H"
 #include "bitSet.H"
 #include "zeroField.H"
@@ -83,9 +83,9 @@ namespace advection
 \*---------------------------------------------------------------------------*/
 
 
-template<class reconstructionScheme>
+template<class interfaceRepresentation>
 class isoAdvection
-    : public interfaceCapturingMethod<reconstructionScheme>
+    : public interfaceCapturingMethod<interfaceRepresentation>
 {
     // Private data types
     
@@ -94,7 +94,7 @@ class isoAdvection
         using interfaceCapturing::alphaPhi_;
         using interfaceCapturing::modelDict;
         using interfaceCapturing::U_;
-        using interfaceCapturingMethod<reconstructionScheme>::surf_;
+        using interfaceCapturingMethod<interfaceRepresentation>::surf_;
 
         typedef DynamicList<label> DynamicLabelList;
         typedef DynamicList<scalar> DynamicScalarList;

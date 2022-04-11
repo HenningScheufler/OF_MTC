@@ -23,7 +23,7 @@ License
 #include "reconstructionError.H"
 #include "addToRunTimeSelectionTable.H"
 
-#include "reconstructionSchemes.H"
+#include "interfaceRepresentation.H"
 #include "implicitFunction.H"
 
 

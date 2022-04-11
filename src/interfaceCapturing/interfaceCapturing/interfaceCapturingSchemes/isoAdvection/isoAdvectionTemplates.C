@@ -33,9 +33,9 @@ License
 #include "interpolationCellPoint.H"
 
 // ************************************************************************* //
-template<class reconstructionScheme>
+template<class interfaceRepresentation>
 template<class Type>
-Type Foam::advection::isoAdvection<reconstructionScheme>::faceValue
+Type Foam::advection::isoAdvection<interfaceRepresentation>::faceValue
 (
     const GeometricField<Type, fvsPatchField, surfaceMesh>& f,
     const label facei
@@ -72,9 +72,9 @@ Type Foam::advection::isoAdvection<reconstructionScheme>::faceValue
 }
 
 
-template<class reconstructionScheme>
+template<class interfaceRepresentation>
 template<class Type>
-void Foam::advection::isoAdvection<reconstructionScheme>::setFaceValue
+void Foam::advection::isoAdvection<interfaceRepresentation>::setFaceValue
 (
     GeometricField<Type, fvsPatchField, surfaceMesh>& f,
     const label facei,
@@ -113,9 +113,9 @@ void Foam::advection::isoAdvection<reconstructionScheme>::setFaceValue
 }
 
 
-template<class reconstructionScheme>
+template<class interfaceRepresentation>
 template < class RdeltaTType,class SpType, class SuType >
-void Foam::advection::isoAdvection<reconstructionScheme>::limitFluxes
+void Foam::advection::isoAdvection<interfaceRepresentation>::limitFluxes
 (
     const RdeltaTType& rDeltaT,
     const SpType& Sp,
@@ -219,9 +219,9 @@ void Foam::advection::isoAdvection<reconstructionScheme>::limitFluxes
 }
 
 
-template<class reconstructionScheme>
+template<class interfaceRepresentation>
 template < class RdeltaTType,class SpType, class SuType >
-void Foam::advection::isoAdvection<reconstructionScheme>::boundFlux
+void Foam::advection::isoAdvection<interfaceRepresentation>::boundFlux
 (
     const bitSet& nextToInterface,
     surfaceScalarField& afcorrectionValues,
@@ -380,9 +380,9 @@ void Foam::advection::isoAdvection<reconstructionScheme>::boundFlux
 }
 
 
-template<class reconstructionScheme>
+template<class interfaceRepresentation>
 template < class SpType, class SuType >
-void Foam::advection::isoAdvection<reconstructionScheme>::advect
+void Foam::advection::isoAdvection<interfaceRepresentation>::advect
 (
     const SpType& Sp,
     const SuType& Su
@@ -402,9 +402,9 @@ void Foam::advection::isoAdvection<reconstructionScheme>::advect
 }
 
 
-template<class reconstructionScheme>
+template<class interfaceRepresentation>
 template < class RdeltaTType >
-void Foam::advection::isoAdvection<reconstructionScheme>::timeIntegratedFlux
+void Foam::advection::isoAdvection<interfaceRepresentation>::timeIntegratedFlux
 (
     const RdeltaTType& rDeltaT
 )
@@ -575,9 +575,9 @@ void Foam::advection::isoAdvection<reconstructionScheme>::timeIntegratedFlux
 }
 
 
-template<class reconstructionScheme>
+template<class interfaceRepresentation>
 template < class RdeltaTType,class SpType, class SuType >
-void Foam::advection::isoAdvection<reconstructionScheme>::advect
+void Foam::advection::isoAdvection<interfaceRepresentation>::advect
 (
     const RdeltaTType& rDeltaT,
     const SpType& Sp,

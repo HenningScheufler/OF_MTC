@@ -44,7 +44,7 @@ SourceFiles
 #include "zeroField.H"
 
 #include "volPointInterpolation.H"
-#include "reconstructionSchemes.H"
+#include "interfaceRepresentation.H"
 
 
 
@@ -59,9 +59,9 @@ namespace advection
                 Class MULESScheme Declaration
 \*---------------------------------------------------------------------------*/
 
-template<class reconstructionScheme>
+template<class interfaceRepresentation>
 class MULESScheme
-    : public interfaceCapturingMethod<reconstructionScheme>
+    : public interfaceCapturingMethod<interfaceRepresentation>
 {
 
 private:
@@ -71,7 +71,7 @@ private:
         using interfaceCapturing::alphaPhi_;
         using interfaceCapturing::modelDict;
         using interfaceCapturing::U_;
-        using interfaceCapturingMethod<reconstructionScheme>::surf_;
+        using interfaceCapturingMethod<interfaceRepresentation>::surf_;
 
         //- Reference to mesh
         const fvMesh& mesh_;

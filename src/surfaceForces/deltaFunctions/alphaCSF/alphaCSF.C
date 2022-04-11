@@ -27,7 +27,7 @@ License
 namespace Foam
 {
     defineTypeNameAndDebug(alphaCSF, 0);
-    addToRunTimeSelectionTable(deltaFunctionModel,alphaCSF, components);
+    addToRunTimeSelectionTable(deltaFunctionModel,alphaCSF, dictionary);
 }
 
 

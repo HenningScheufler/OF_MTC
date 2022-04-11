@@ -38,7 +38,7 @@ Foam::accelerationModel::New
     Info<< "Selecting surfaceTension model "
         << accelerationModelTypeName << endl;
 
-    auto* ctorPtr = componentsConstructorTable(accelerationModelTypeName);
+    auto* ctorPtr = dictionaryConstructorTable(accelerationModelTypeName);
 
     if (!ctorPtr)
     {
@@ -46,7 +46,7 @@ Foam::accelerationModel::New
         (
             "massSourceTermModel",
             accelerationModelTypeName,
-            *componentsConstructorTablePtr_
+            *dictionaryConstructorTablePtr_
         ) << exit(FatalError);
     }
 

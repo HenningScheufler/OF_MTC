@@ -43,15 +43,15 @@ License
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class reconstructionScheme>
-Foam::advection::isoAdvection<reconstructionScheme>::isoAdvection
+template<class interfaceRepresentation>
+Foam::advection::isoAdvection<interfaceRepresentation>::isoAdvection
 (
     volScalarField& alpha1,
     const surfaceScalarField& phi,
     const volVectorField& U
 )
 :
-    interfaceCapturingMethod<reconstructionScheme>
+    interfaceCapturingMethod<interfaceRepresentation>
     (
         alpha1,
         phi,
@@ -106,8 +106,8 @@ Foam::advection::isoAdvection<reconstructionScheme>::isoAdvection
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-template<class reconstructionScheme>
-void Foam::advection::isoAdvection<reconstructionScheme>::setProcessorPatches()
+template<class interfaceRepresentation>
+void Foam::advection::isoAdvection<interfaceRepresentation>::setProcessorPatches()
 {
     const polyBoundaryMesh& patches = mesh_.boundaryMesh();
     surfaceCellFacesOnProcPatches_.clear();
@@ -129,8 +129,8 @@ void Foam::advection::isoAdvection<reconstructionScheme>::setProcessorPatches()
 }
 
 
-template<class reconstructionScheme>
-void Foam::advection::isoAdvection<reconstructionScheme>::extendMarkedCells
+template<class interfaceRepresentation>
+void Foam::advection::isoAdvection<interfaceRepresentation>::extendMarkedCells
 (
     bitSet& markedCell
 ) const
@@ -164,8 +164,8 @@ void Foam::advection::isoAdvection<reconstructionScheme>::extendMarkedCells
 }
 
 
-template<class reconstructionScheme>
-void Foam::advection::isoAdvection<reconstructionScheme>::setDownwindFaces
+template<class interfaceRepresentation>
+void Foam::advection::isoAdvection<interfaceRepresentation>::setDownwindFaces
 (
     const label celli,
     DynamicLabelList& downwindFaces
@@ -204,8 +204,8 @@ void Foam::advection::isoAdvection<reconstructionScheme>::setDownwindFaces
 }
 
 
-template<class reconstructionScheme>
-Foam::scalar Foam::advection::isoAdvection<reconstructionScheme>::netFlux
+template<class interfaceRepresentation>
+Foam::scalar Foam::advection::isoAdvection<interfaceRepresentation>::netFlux
 (
     const surfaceScalarField& dVf,
     const label celli
@@ -238,8 +238,8 @@ Foam::scalar Foam::advection::isoAdvection<reconstructionScheme>::netFlux
 }
 
 
-template<class reconstructionScheme>
-Foam::DynamicList<Foam::label>  Foam::advection::isoAdvection<reconstructionScheme>::syncProcPatches
+template<class interfaceRepresentation>
+Foam::DynamicList<Foam::label>  Foam::advection::isoAdvection<interfaceRepresentation>::syncProcPatches
 (
     surfaceScalarField& dVf,
     const surfaceScalarField& phi,
@@ -349,8 +349,8 @@ Foam::DynamicList<Foam::label>  Foam::advection::isoAdvection<reconstructionSche
 }
 
 
-template<class reconstructionScheme>
-void Foam::advection::isoAdvection<reconstructionScheme>::checkIfOnProcPatch(const label facei)
+template<class interfaceRepresentation>
+void Foam::advection::isoAdvection<interfaceRepresentation>::checkIfOnProcPatch(const label facei)
 {
     if (!mesh_.isInternalFace(facei))
     {
@@ -366,8 +366,8 @@ void Foam::advection::isoAdvection<reconstructionScheme>::checkIfOnProcPatch(con
 }
 
 
-template<class reconstructionScheme>
-void Foam::advection::isoAdvection<reconstructionScheme>::applyBruteForceBounding()
+template<class interfaceRepresentation>
+void Foam::advection::isoAdvection<interfaceRepresentation>::applyBruteForceBounding()
 {
     addProfilingInFunction(geometricVoF);
     bool alpha1Changed = false;

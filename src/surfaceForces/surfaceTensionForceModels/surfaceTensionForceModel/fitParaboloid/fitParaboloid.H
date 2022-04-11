@@ -100,7 +100,7 @@ class fitParaboloid
         TypeName("fitParaboloid");
 
     // Constructors
-        //- Construct from components
+        //- Construct from dictionary
         fitParaboloid
         (
             const dictionary& dict,

@@ -84,6 +84,13 @@ private:
 
     // Private Member Functions
 
+        static Ostream& printSurfaceForceModels
+        (
+            Ostream& os,
+            const wordList& cmptNames,
+            const wordList& surfaceForceNames
+        );
+
         //- Disallow copy construct
         surfaceTensionForceModel(const surfaceTensionForceModel&);
 
@@ -101,7 +108,7 @@ public:
         (
             autoPtr,
             surfaceTensionForceModel,
-            components,
+            dictionary,
             (
                 const dictionary& dict,
                 const volScalarField& alpha1,
@@ -124,7 +131,7 @@ public:
 
     // Constructors
 
-        //- Construct from components
+        //- Construct from dictionary
         surfaceTensionForceModel
         (
             const word& type,
@@ -139,6 +146,7 @@ public:
     {}
 
     // Member Functions
+
 
         const volScalarField& K() const
         {

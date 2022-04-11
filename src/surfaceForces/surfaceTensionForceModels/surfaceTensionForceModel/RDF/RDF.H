@@ -114,7 +114,7 @@ public:
 
     // Constructors
 
-        //- Construct from components
+        //- Construct from dictionary
         RDF
         (
             const dictionary& dict,

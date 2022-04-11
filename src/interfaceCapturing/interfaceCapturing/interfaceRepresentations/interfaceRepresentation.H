@@ -24,13 +24,13 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::reconstructionSchemes
+    Foam::interfaceRepresentation
 
 Description
     Original code supplied by Henning Scheufler, DLR (2019)
 
 SourceFiles
-    reconstructionSchemes.C
+    interfaceRepresentation.C
 
 \*---------------------------------------------------------------------------*/
 
@@ -47,10 +47,10 @@ namespace Foam
 {
 
 /*---------------------------------------------------------------------------*\
-                    Class reconstructionSchemes Declaration
+                    Class interfaceRepresentation Declaration
 \*---------------------------------------------------------------------------*/
 
-class reconstructionSchemes
+class interfaceRepresentation
 {
     // Private Data
 
@@ -93,10 +93,10 @@ protected:
         bool alreadyReconstructed(bool forceUpdate = true) const;
 
         //- No copy construct
-        reconstructionSchemes(const reconstructionSchemes&) = delete;
+        interfaceRepresentation(const interfaceRepresentation&) = delete;
 
         //- No copy assignment
-        void operator=(const reconstructionSchemes&) = delete;
+        void operator=(const interfaceRepresentation&) = delete;
 
 
 
@@ -104,10 +104,10 @@ protected:
 public:
     // Constructors
 
-        TypeName("reconstructionSchemes");
+        TypeName("interfaceRepresentation");
 
         //- Construct from components
-        reconstructionSchemes
+        interfaceRepresentation
         (
             volScalarField& alpha1,
             const surfaceScalarField& phi,
@@ -117,7 +117,7 @@ public:
 
 
     //- Destructor
-    virtual ~reconstructionSchemes() = default;
+    virtual ~interfaceRepresentation() = default;
 
 
     // Member Functions

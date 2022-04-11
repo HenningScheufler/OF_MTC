@@ -25,20 +25,20 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "reconstructionSchemes.H"
+#include "interfaceRepresentation.H"
 #include "cutCellPLIC.H"
 
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
 
 namespace Foam
 {
-    defineTypeNameAndDebug(reconstructionSchemes, 0);
+    defineTypeNameAndDebug(interfaceRepresentation, 0);
 }
 
 
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * //
 
-bool Foam::reconstructionSchemes::alreadyReconstructed(bool forceUpdate) const
+bool Foam::interfaceRepresentation::alreadyReconstructed(bool forceUpdate) const
 {
     const Time& runTime = alpha1_.mesh().time();
 
@@ -77,7 +77,7 @@ bool Foam::reconstructionSchemes::alreadyReconstructed(bool forceUpdate) const
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::reconstructionSchemes::reconstructionSchemes
+Foam::interfaceRepresentation::interfaceRepresentation
 (
     volScalarField& alpha1,
     const surfaceScalarField& phi,

@@ -53,7 +53,7 @@ namespace Foam
 /*---------------------------------------------------------------------------*\
                 Class interfaceCapturingMethod Declaration
 \*---------------------------------------------------------------------------*/
-template<class reconstructionScheme>
+template<class interfaceRepresentation>
 class interfaceCapturingMethod
     : public interfaceCapturing
 {
@@ -68,11 +68,11 @@ class interfaceCapturingMethod
         void operator=(const interfaceCapturingMethod&);
 protected:
 
-    reconstructionScheme surf_;
+    interfaceRepresentation surf_;
 
 public:
 
-    typedef reconstructionScheme reconScheme;
+    typedef interfaceRepresentation reconScheme;
 
     // Selectors
 

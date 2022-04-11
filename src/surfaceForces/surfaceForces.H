@@ -56,6 +56,7 @@ namespace Foam
                 Class surfaceForces Declaration
 \*---------------------------------------------------------------------------*/
 
+
 class surfaceForces
 {
 private:
@@ -87,7 +88,7 @@ public:
 
     // Constructors
 
-        //- Construct from components
+        //- Construct from dictionary
         surfaceForces
         (
             const volScalarField& alpha1,

@@ -37,7 +37,7 @@ License
 
 namespace Foam
 {
-namespace reconstruction
+namespace interface
 {
     defineTypeNameAndDebug(plicRDF, 0);
 }
@@ -46,7 +46,7 @@ namespace reconstruction
 
 // * * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * //
 
-void Foam::reconstruction::plicRDF::interpolateNormal()
+void Foam::interface::plicRDF::interpolateNormal()
 {
     addProfilingInFunction(geometricVoF);
     scalar dt = mesh_.time().deltaTValue();
@@ -160,7 +160,7 @@ void Foam::reconstruction::plicRDF::interpolateNormal()
     }
 }
 
-void Foam::reconstruction::plicRDF::gradSurf(const volScalarField& phi)
+void Foam::interface::plicRDF::gradSurf(const volScalarField& phi)
 {
     addProfilingInFunction(geometricVoF);
     leastSquareGrad<scalar> lsGrad("polyDegree1", mesh_.geometricD());
@@ -207,7 +207,7 @@ void Foam::reconstruction::plicRDF::gradSurf(const volScalarField& phi)
 }
 
 
-void Foam::reconstruction::plicRDF::setInitNormals(bool interpolate)
+void Foam::interface::plicRDF::setInitNormals(bool interpolate)
 {
     addProfilingInFunction(geometricVoF);
     zoneDistribute& exchangeFields = zoneDistribute::New(mesh_);
@@ -239,7 +239,7 @@ void Foam::reconstruction::plicRDF::setInitNormals(bool interpolate)
 }
 
 
-void Foam::reconstruction::plicRDF::calcResidual
+void Foam::interface::plicRDF::calcResidual
 (
     List<normalRes>& normalResidual
 )
@@ -307,7 +307,7 @@ void Foam::reconstruction::plicRDF::calcResidual
     }
 }
 
-void Foam::reconstruction::plicRDF::centreAndNormalBC()
+void Foam::interface::plicRDF::centreAndNormalBC()
 {
     addProfilingInFunction(geometricVoF);
     scalar convertToRad = Foam::constant::mathematical::pi/180.0;
@@ -415,7 +415,7 @@ void Foam::reconstruction::plicRDF::centreAndNormalBC()
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::reconstruction::plicRDF::plicRDF
+Foam::interface::plicRDF::plicRDF
 (
     volScalarField& alpha1,
     const surfaceScalarField& phi,
@@ -423,7 +423,7 @@ Foam::reconstruction::plicRDF::plicRDF
     const dictionary& dict
 )
 :
-    reconstructionSchemes
+    interfaceRepresentation
     (
         alpha1,
         phi,
@@ -485,7 +485,7 @@ Foam::reconstruction::plicRDF::plicRDF
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
 
-void Foam::reconstruction::plicRDF::reconstruct(bool forceUpdate)
+void Foam::interface::plicRDF::reconstruct(bool forceUpdate)
 {
     addProfilingInFunction(geometricVoF);
     zoneDistribute& exchangeFields = zoneDistribute::New(mesh_);
@@ -652,7 +652,7 @@ void Foam::reconstruction::plicRDF::reconstruct(bool forceUpdate)
 }
 
 
-void Foam::reconstruction::plicRDF::mapAlphaField() const
+void Foam::interface::plicRDF::mapAlphaField() const
 {
     addProfilingInFunction(geometricVoF);
     // without it we seem to get a race condition

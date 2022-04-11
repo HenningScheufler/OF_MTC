@@ -71,7 +71,7 @@ public:
 
     // Constructors
 
-        //- Construct from components
+        //- Construct from dictionary
         alphaCSF
         (
             const dictionary& dict,

@@ -82,7 +82,7 @@ public:
 
     // Constructors
 
-        //- Construct from components
+        //- Construct from dictionary
         gravity
         (
             const dictionary& dict,

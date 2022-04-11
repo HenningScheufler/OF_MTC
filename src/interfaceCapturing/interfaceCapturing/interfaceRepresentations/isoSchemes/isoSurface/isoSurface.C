@@ -27,7 +27,7 @@ License
 
 namespace Foam
 {
-namespace reconstruction
+namespace interface
 {
     defineTypeNameAndDebug(isoSurface, 0);
 }
@@ -35,7 +35,7 @@ namespace reconstruction
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::reconstruction::isoSurface::isoSurface
+Foam::interface::isoSurface::isoSurface
 (
     volScalarField& alpha1,
     const surfaceScalarField& phi,
@@ -43,7 +43,7 @@ Foam::reconstruction::isoSurface::isoSurface
     const dictionary& dict
 )
 :
-    reconstructionSchemes
+    interfaceRepresentation
     (
         alpha1,
         phi,
@@ -63,13 +63,13 @@ Foam::reconstruction::isoSurface::isoSurface
 
 // * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
-Foam::reconstruction::isoSurface::~isoSurface()
+Foam::interface::isoSurface::~isoSurface()
 {}
 
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
 
-void Foam::reconstruction::isoSurface::reconstruct(bool forceUpdate)
+void Foam::interface::isoSurface::reconstruct(bool forceUpdate)
 {
     const bool uptodate = alreadyReconstructed(forceUpdate);
 

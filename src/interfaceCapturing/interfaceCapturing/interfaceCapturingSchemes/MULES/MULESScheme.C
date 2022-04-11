@@ -38,8 +38,8 @@ License
 
 
 
-template<class reconstructionScheme>
-void Foam::advection::MULESScheme<reconstructionScheme>::updateNHatf()
+template<class interfaceRepresentation>
+void Foam::advection::MULESScheme<interfaceRepresentation>::updateNHatf()
 {
     // Cell gradient of alpha
     const volVectorField gradAlpha(fvc::grad(alpha1_, "nHat"));
@@ -60,15 +60,15 @@ void Foam::advection::MULESScheme<reconstructionScheme>::updateNHatf()
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class reconstructionScheme>
-Foam::advection::MULESScheme<reconstructionScheme>::MULESScheme
+template<class interfaceRepresentation>
+Foam::advection::MULESScheme<interfaceRepresentation>::MULESScheme
 (
         volScalarField& alpha1,
         const surfaceScalarField& phi,
         const volVectorField& U
 )
 :
-    interfaceCapturingMethod<reconstructionScheme>
+    interfaceCapturingMethod<interfaceRepresentation>
     (
         alpha1,
         phi,
@@ -160,17 +160,17 @@ Foam::advection::MULESScheme<reconstructionScheme>::MULESScheme
 
 // * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
-template<class reconstructionScheme>
-Foam::advection::MULESScheme<reconstructionScheme>::~MULESScheme()
+template<class interfaceRepresentation>
+Foam::advection::MULESScheme<interfaceRepresentation>::~MULESScheme()
 {}
 
 // * * * * * * * * * * * * * * Protected Access Member Functions  * * * * * * * * * * * * * * //
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
 
-template<class reconstructionScheme>
+template<class interfaceRepresentation>
 template<class SpType, class SuType>
-void Foam::advection::MULESScheme<reconstructionScheme>::advect(const SpType& Sp, const SuType& Su)
+void Foam::advection::MULESScheme<interfaceRepresentation>::advect(const SpType& Sp, const SuType& Su)
 {
     updateNHatf();
 

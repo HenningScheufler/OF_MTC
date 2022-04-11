@@ -32,7 +32,7 @@ License
 #include "interpolationCellPoint.H"
 #include "tensor2D.H"
 
-#include "reconstructionSchemes.H"
+#include "interfaceRepresentation.H"
 #include "leastSquareFitParabolid.H"
 #include "cutFacePLIC.H"
 #include "cutCellIso.H"
@@ -44,7 +44,7 @@ License
 namespace Foam
 {
     defineTypeNameAndDebug(fitParaboloid, 0);
-    addToRunTimeSelectionTable(surfaceTensionForceModel,fitParaboloid, components);
+    addToRunTimeSelectionTable(surfaceTensionForceModel,fitParaboloid, dictionary);
 }
 
 
@@ -277,7 +277,7 @@ void Foam::fitParaboloid::correct()
 
     const fvMesh& mesh = alpha1_.mesh();
 
-    reconstructionSchemes& surf = mesh.lookupObjectRef<reconstructionSchemes>("reconstructionScheme");
+    interfaceRepresentation& surf = mesh.lookupObjectRef<interfaceRepresentation>("reconstructionScheme");
     // can also be an isosurface
     surf.reconstruct(false);
 

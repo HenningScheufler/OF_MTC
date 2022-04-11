@@ -24,7 +24,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::reconstruction::gradAlpha
+    Foam::interface::gradAlpha
 
 Description
     Reconstructs an interface (centre and normal vector) consisting of planes
@@ -43,7 +43,7 @@ SourceFiles
 #define gradAlpha_H
 
 #include "typeInfo.H"
-#include "reconstructionSchemes.H"
+#include "interfaceRepresentation.H"
 #include "volFields.H"
 #include "dimensionedScalar.H"
 #include "autoPtr.H"
@@ -54,7 +54,7 @@ SourceFiles
 
 namespace Foam
 {
-namespace reconstruction
+namespace interface
 {
 
 /*---------------------------------------------------------------------------*\
@@ -63,7 +63,7 @@ namespace reconstruction
 
 class gradAlpha
 :
-    public reconstructionSchemes
+    public interfaceRepresentation
 {
     // Private Data
 
@@ -129,7 +129,7 @@ public:
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-} // End namespace reconstruction
+} // End namespace interface
 } // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

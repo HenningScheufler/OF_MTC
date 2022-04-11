@@ -50,7 +50,7 @@ Foam::interfaceCapturing::New
     word interfaceCapturingTypeName = 
     (
         alphaDict.get<word>("interfaceCapturingScheme") + "_"
-      + alphaDict.get<word>("reconstructionScheme") 
+      + alphaDict.get<word>("interfaceRepresentation") 
     );
 
     Info<< "Selecting interfaceCapturingScheme: "

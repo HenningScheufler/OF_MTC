@@ -34,7 +34,7 @@ License
 
 namespace Foam
 {
-namespace reconstruction
+namespace interface
 {
     defineTypeNameAndDebug(isoAlpha, 0);
 }
@@ -43,7 +43,7 @@ namespace reconstruction
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::reconstruction::isoAlpha::isoAlpha
+Foam::interface::isoAlpha::isoAlpha
 (
     volScalarField& alpha1,
     const surfaceScalarField& phi,
@@ -51,7 +51,7 @@ Foam::reconstruction::isoAlpha::isoAlpha
     const dictionary& dict
 )
 :
-    reconstructionSchemes
+    interfaceRepresentation
     (
         alpha1,
         phi,
@@ -73,7 +73,7 @@ Foam::reconstruction::isoAlpha::isoAlpha
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
 
-void Foam::reconstruction::isoAlpha::reconstruct(bool forceUpdate)
+void Foam::interface::isoAlpha::reconstruct(bool forceUpdate)
 {
     addProfilingInFunction(geometricVoF);
     const bool uptodate = alreadyReconstructed(forceUpdate);

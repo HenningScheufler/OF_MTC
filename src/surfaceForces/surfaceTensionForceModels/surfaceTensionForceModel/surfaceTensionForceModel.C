@@ -18,17 +18,19 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "surfaceTensionForceModel.H"
-
+#include "stringOps.H"
+#include "wordIOList.H"
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
 
 namespace Foam
 {
     defineTypeNameAndDebug(surfaceTensionForceModel, 0);
-    defineRunTimeSelectionTable(surfaceTensionForceModel, components);
+    defineRunTimeSelectionTable(surfaceTensionForceModel, dictionary);
 }
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
+ 
 Foam::surfaceTensionForceModel::surfaceTensionForceModel
 (
     const word& type,
@@ -89,6 +91,66 @@ Foam::surfaceTensionForceModel::surfaceTensionForceModel
 }
 
 
+Foam::Ostream& Foam::surfaceTensionForceModel::printSurfaceForceModels
+(
+    Ostream& os,
+    const wordList& cmptNames,
+    const wordList& surfaceForceNames
+)
+{
+    const int nCmpt = cmptNames.size();
+
+    // Build a table of constituent parts by split name into constituent parts
+    // - remove incompatible entries from the list
+    // - note: row-0 contains the names of constituent parts (ie, the header)
+
+    DynamicList<wordList> outputTbl;
+    outputTbl.resize(surfaceForceNames.size()+1);
+
+    label rowi = 0;
+
+    // Header
+    outputTbl[rowi] = cmptNames;
+    if (!outputTbl[rowi].empty())
+    {
+        ++rowi;
+    }
+
+    for (const word& name : surfaceForceNames)
+    {
+        const auto splitted = stringOps::split<string>(name, '_');
+        DynamicList<std::string> splittedString;
+        for (std::string s: splitted)
+        {
+            splittedString.append(s);
+        }
+        wordList splittedNames(3,"any");
+        splittedNames[2] = splittedString.last();
+        if (splittedString.size() == 2)
+        {
+            splittedNames[0] = splittedString[0];
+        }
+        else if (splittedString.size() == 3)
+        {
+            splittedNames[0] = splittedString[0];
+            splittedNames[1] = splittedString[1];
+        }
+        
+        outputTbl[rowi] = splittedNames;
+        if (!outputTbl[rowi].empty())
+        {
+            ++rowi;
+        }
+    }
+
+    if (rowi > 1)
+    {
+        outputTbl.resize(rowi);
+        Foam::printTable(outputTbl, os);
+    }
+
+    return os;
+}
 
 
 

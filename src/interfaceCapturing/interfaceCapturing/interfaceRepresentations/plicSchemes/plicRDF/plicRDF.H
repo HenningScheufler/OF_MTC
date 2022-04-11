@@ -24,7 +24,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::reconstruction::plicRDF
+    Foam::interface::plicRDF
 
 Description
     Reconstructs an interface (centre and normal vector) consisting of planes
@@ -35,7 +35,7 @@ Description
     Reference:
     \verbatim
         Henning Scheufler, Johan Roenby,
-        Accurate and efficient surface reconstruction from volume
+        Accurate and efficient surface interface from volume
         fraction data on general meshes,
         Journal of Computational Physics, 2019,
         doi 10.1016/j.jcp.2019.01.009
@@ -53,7 +53,7 @@ SourceFiles
 #define plicRDF_H
 
 #include "typeInfo.H"
-#include "reconstructionSchemes.H"
+#include "interfaceRepresentation.H"
 #include "volFields.H"
 #include "dimensionedScalar.H"
 #include "autoPtr.H"
@@ -65,7 +65,7 @@ SourceFiles
 
 namespace Foam
 {
-namespace reconstruction
+namespace interface
 {
 
 /*---------------------------------------------------------------------------*\
@@ -74,7 +74,7 @@ namespace reconstruction
 
 class plicRDF
 :
-    public reconstructionSchemes
+    public interfaceRepresentation
 {
     // Private Data
 
@@ -183,7 +183,7 @@ public:
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-} // End namespace reconstruction
+} // End namespace interface
 } // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

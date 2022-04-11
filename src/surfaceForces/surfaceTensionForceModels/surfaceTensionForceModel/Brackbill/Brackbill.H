@@ -16,19 +16,19 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::brackbill
+    Foam::Brackbill
 
 Description
     estimates the curvature from the volume fraction field similiar to the
-    mode of brackbill et al.
+    mode of Brackbill et al.
 
 SourceFiles
-    brackbill.C
+    Brackbill.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef brackbill_H
-#define brackbill_H
+#ifndef Brackbill_H
+#define Brackbill_H
 
 #include "typeInfo.H"
 #include "volFields.H"
@@ -46,10 +46,11 @@ namespace Foam
 {
 
 /*---------------------------------------------------------------------------*\
-                Class brackbill Declaration
+                Class Brackbill Declaration
 \*---------------------------------------------------------------------------*/
 
-class brackbill
+template<class interfaceCapturing>
+class Brackbill
     : public surfaceTensionForceModel
 {
 
@@ -64,15 +65,15 @@ private:
         virtual void correctContactAngle
         (
             surfaceVectorField::Boundary& nHat,
-            surfaceVectorField::Boundary& brackbillf
+            surfaceVectorField::Boundary& Brackbillf
         );
 
 
         //- Disallow copy construct
-        brackbill(const brackbill&);
+        Brackbill(const Brackbill&);
 
         //- Disallow default bitwise assignment
-        void operator=(const brackbill&);
+        void operator=(const Brackbill&);
 
 public:
 
@@ -82,8 +83,8 @@ public:
 
     // Constructors
 
-        //- Construct from components
-        brackbill
+        //- Construct from dictionary
+        Brackbill
         (
             const dictionary& dict,
             const volScalarField& alpha1,
@@ -93,7 +94,7 @@ public:
 
 
     //- Destructor
-    virtual ~brackbill()
+    virtual ~Brackbill()
     {}
 
     virtual void correct();
@@ -106,6 +107,11 @@ public:
 } // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#ifdef NoRepository
+#   include "Brackbill.C"
+#endif
+
 
 #endif
 

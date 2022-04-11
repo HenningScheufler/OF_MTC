@@ -24,7 +24,7 @@ License
 namespace Foam
 {
     defineTypeNameAndDebug(accelerationModel, 0);
-    defineRunTimeSelectionTable(accelerationModel, components);
+    defineRunTimeSelectionTable(accelerationModel, dictionary);
 }
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //

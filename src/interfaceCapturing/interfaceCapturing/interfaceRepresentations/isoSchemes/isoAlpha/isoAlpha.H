@@ -24,7 +24,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::reconstruction::isoAlpha
+    Foam::interface::isoAlpha
 
 Description
     Reconstructs an interface (centre and normal vectors) consisting of isosurfaces
@@ -55,7 +55,7 @@ SourceFiles
 
 #include "autoPtr.H"
 #include "dimensionedScalar.H"
-#include "reconstructionSchemes.H"
+#include "interfaceRepresentation.H"
 #include "typeInfo.H"
 #include "volFields.H"
 
@@ -66,7 +66,7 @@ SourceFiles
 
 namespace Foam
 {
-namespace reconstruction
+namespace interface
 {
 
 /*---------------------------------------------------------------------------*\
@@ -75,7 +75,7 @@ namespace reconstruction
 
 class isoAlpha
 :
-    public reconstructionSchemes
+    public interfaceRepresentation
 {
     // Private Data
 
@@ -140,7 +140,7 @@ public:
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-} // End namespace reconstruction
+} // End namespace interface
 } // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

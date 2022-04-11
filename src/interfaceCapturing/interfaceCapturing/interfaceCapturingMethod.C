@@ -27,8 +27,8 @@ License
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class reconstructionScheme>
-Foam::interfaceCapturingMethod<reconstructionScheme>::interfaceCapturingMethod
+template<class interfaceRepresentation>
+Foam::interfaceCapturingMethod<interfaceRepresentation>::interfaceCapturingMethod
 (
       volScalarField& alpha1,
       const surfaceScalarField& phi,
@@ -50,8 +50,8 @@ Foam::interfaceCapturingMethod<reconstructionScheme>::interfaceCapturingMethod
 
 // * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
 
-template<class reconstructionScheme>
-Foam::interfaceCapturingMethod<reconstructionScheme>::~interfaceCapturingMethod()
+template<class interfaceRepresentation>
+Foam::interfaceCapturingMethod<interfaceRepresentation>::~interfaceCapturingMethod()
 {}
 
 // * * * * * * * * * * * * * * Public Access Member Functions  * * * * * * * * * * * * * * //

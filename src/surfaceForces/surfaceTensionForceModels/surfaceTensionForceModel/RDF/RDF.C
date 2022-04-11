@@ -31,7 +31,7 @@ License
 #include "plane.H"
 #include "interpolationCellPoint.H"
 
-#include "reconstructionSchemes.H"
+#include "interfaceRepresentation.H"
 #include "wedgePolyPatch.H"
 #include "indexedOctree.H"
 #include "treeDataPoint.H"
@@ -41,7 +41,7 @@ License
 namespace Foam
 {
     defineTypeNameAndDebug(RDF, 0);
-    addToRunTimeSelectionTable(surfaceTensionForceModel,RDF, components);
+    addToRunTimeSelectionTable(surfaceTensionForceModel,RDF, dictionary);
 }
 
 
@@ -263,8 +263,8 @@ void Foam::RDF::correct()
     mesh.time().cpuTimeIncrement();
     const surfaceVectorField& Sf = mesh.Sf();
 
-    reconstructionSchemes& surf =
-        mesh.lookupObjectRef<reconstructionSchemes>("reconstructionScheme");
+    interfaceRepresentation& surf =
+        mesh.lookupObjectRef<interfaceRepresentation>("reconstructionScheme");
 
     surf.reconstruct(false);
 

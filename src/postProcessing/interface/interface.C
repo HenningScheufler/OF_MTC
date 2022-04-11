@@ -21,7 +21,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "interface.H"
-#include "reconstructionSchemes.H"
+#include "interfaceRepresentation.H"
 #include "cutCellPLIC.H"
 
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
@@ -47,7 +47,7 @@ Foam::interface::interface
     mesh_(mesh)
 {
 
-    reconstructionSchemes& surf = mesh_.lookupObjectRef<reconstructionSchemes>("reconstructionScheme");
+    interfaceRepresentation& surf = mesh_.lookupObjectRef<interfaceRepresentation>("interfaceRepresentation");
 
     // why do we need this?
     surf.reconstruct(false);
