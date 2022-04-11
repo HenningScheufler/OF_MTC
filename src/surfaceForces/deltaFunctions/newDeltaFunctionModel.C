@@ -33,7 +33,7 @@ Foam::deltaFunctionModel::New
     Info<< "Selecting surfaceTension model "
         << deltaFunctionModelTypeName << endl;
 
-    auto* ctorPtr = componentsConstructorTable(deltaFunctionModelTypeName);
+    auto* ctorPtr = dictionaryConstructorTable(deltaFunctionModelTypeName);
 
     if (!ctorPtr)
     {
@@ -41,7 +41,7 @@ Foam::deltaFunctionModel::New
         (
             "massSourceTermModel",
             deltaFunctionModelTypeName,
-            *componentsConstructorTablePtr_
+            *dictionaryConstructorTablePtr_
         ) << exit(FatalError);
     }
 

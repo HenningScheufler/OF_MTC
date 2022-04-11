@@ -29,7 +29,7 @@ EXE_INC = \
     -I$(LIB_SRC)/functionObjects/field/lnInclude \
     -I$(LIB_SRC)/transportModels/twoPhaseMixture/lnInclude \
     -I$(LIB_SRC)/transportModels/interfaceProperties/lnInclude \
-    -I../interfaceCapturing/lnInclude
+    -I../interfaceCapturing/lnInclude \
 
 LIB_LIBS = \
     -lalphaFieldFunctions \

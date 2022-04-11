@@ -82,7 +82,7 @@ public:
         (
             autoPtr,
             accelerationModel,
-            components,
+            dictionary,
             (
                 const dictionary& dict,
                 const fvMesh& mesh
@@ -101,7 +101,7 @@ public:
 
     // Constructors
 
-        //- Construct from components
+        //- Construct from dictionary
         accelerationModel
         (
             const word& type,

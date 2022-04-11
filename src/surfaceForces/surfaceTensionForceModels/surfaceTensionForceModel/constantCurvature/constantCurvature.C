@@ -31,7 +31,7 @@ License
 namespace Foam
 {
     defineTypeNameAndDebug(constantCurvature, 0);
-    addToRunTimeSelectionTable(surfaceTensionForceModel,constantCurvature, components);
+    addToRunTimeSelectionTable(surfaceTensionForceModel,constantCurvature, dictionary);
 }
 
 

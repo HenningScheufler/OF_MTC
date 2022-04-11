@@ -25,7 +25,7 @@ License
 namespace Foam
 {
     defineTypeNameAndDebug(deltaFunctionModel, 0);
-    defineRunTimeSelectionTable(deltaFunctionModel, components);
+    defineRunTimeSelectionTable(deltaFunctionModel, dictionary);
 }
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //

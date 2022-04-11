@@ -89,7 +89,7 @@ public:
         (
             autoPtr,
             deltaFunctionModel,
-            components,
+            dictionary,
             (
                 const dictionary& dict,
                 const volScalarField& alpha1
@@ -111,7 +111,7 @@ public:
 
     // Constructors
 
-        //- Construct from components
+        //- Construct from dictionary
         deltaFunctionModel
         (
             const word type,

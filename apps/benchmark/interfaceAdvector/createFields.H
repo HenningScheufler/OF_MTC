@@ -32,9 +32,9 @@ Info << "sum(alpha*V) = " << V0
 //IsoAdvector related stuff
 //isoAdvection advectorIso(alphaIso,phi,U);
 // Construct incompressible turbulence model
-autoPtr<advectionSchemes> advector
+autoPtr<interfaceCapturing> advector
 (
-    advectionSchemes::New(alpha1,phi,U)
+    interfaceCapturing::New(alpha1,phi,U)
 );
 
 IOdictionary fvSolutionDict

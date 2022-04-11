@@ -32,10 +32,17 @@ volVectorField U
 
 
 Info<< "Reading transportProperties\n" << endl;
-immiscibleIncompressibleTwoPhaseMixture mixture(U, phi);
+// immiscibleIncompressibleTwoPhaseMixture mixture(U, phi);
+incompressibleTwoPhaseMixture mixture(U, phi);
 
 volScalarField& alpha1(mixture.alpha1());
 volScalarField& alpha2(mixture.alpha2());
+
+autoPtr<interfaceCapturing> advector
+(
+    interfaceCapturing::New(alpha1,phi,U)
+);
+
 
 const dimensionedScalar& rho1 = mixture.rho1();
 const dimensionedScalar& rho2 = mixture.rho2();
@@ -142,10 +149,6 @@ mesh.setFluxRequired(alpha1.name());
 #include "createMRF.H"
 #include "createFvOptions.H"
 
-autoPtr<advectionSchemes> advector
-(
-    advectionSchemes::New(alpha1,phi,U)
-);
 
 
 

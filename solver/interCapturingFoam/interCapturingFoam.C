@@ -1,4 +1,4 @@
-#include "advectionSchemes.H"
+#include "interfaceCapturing.H"
 #include "fvCFD.H"
 #include "dynamicFvMesh.H"
 #include "isoAdvection.H"
@@ -64,7 +64,8 @@ int main(int argc, char *argv[])
 
         ++runTime;
 
-        if(overwrite)
+        // helps with the initialization of AMR
+        if(overwrite) 
         {
             runTime.setTime(runTime.value() - runTime.deltaTValue(), 1);
             runTime.writeAndEnd();

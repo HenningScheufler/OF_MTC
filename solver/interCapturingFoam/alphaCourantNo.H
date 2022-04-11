@@ -45,9 +45,10 @@ scalar capillaryNum = 0.0;
 
 if (mesh.nInternalFaces())
 {
+    volScalarField nearInterface = pos0(alpha1 - 0.01)*pos0(0.99 - alpha1);
     scalarField sumPhi
     (
-        mixture.nearInterface()().primitiveField()
+        nearInterface.primitiveField()
        *fvc::surfaceSum(mag(phi))().primitiveField()
     );
 

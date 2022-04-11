@@ -25,7 +25,7 @@ License
 #include "surfaceInterpolate.H"
 #include "fvcDiv.H"
 #include "fvcGrad.H"
-#include "reconstructionSchemes.H"
+#include "interfaceRepresentation.H"
 #include "SortableList.H"
 #include "leastSquareFitParabolid.H"
 
@@ -35,7 +35,8 @@ License
 namespace Foam
 {
     defineTypeNameAndDebug(heightFunction, 0);
-    addToRunTimeSelectionTable(surfaceTensionForceModel,heightFunction, components);
+    //addToRunTimeSelectionTable(surfaceTensionForceModel,heightFunction, dictionary);
+    addNamedToRunTimeSelectionTable(surfaceTensionForceModel,heightFunction, dictionary, isoAdvection_heightFunction);
 }
 
 
@@ -321,8 +322,8 @@ void Foam::heightFunction::correct()
     const fvMesh& mesh = alpha1_.mesh();
     const surfaceVectorField& Sf = mesh.Sf();
 
-    reconstructionSchemes& surf =
-        mesh.lookupObjectRef<reconstructionSchemes>("reconstructionScheme");
+    interfaceRepresentation& surf =
+        mesh.lookupObjectRef<interfaceRepresentation>("reconstructionScheme");
 
     // can also be an isosurface
     surf.reconstruct(false);

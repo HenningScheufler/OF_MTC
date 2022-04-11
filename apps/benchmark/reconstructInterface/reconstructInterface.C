@@ -36,7 +36,7 @@ Author
 
 #include "OFstream.H"
 
-#include "reconstructionSchemes.H"
+#include "interfaceRepresentation.H"
 #include "implicitFunction.H"
 #include "cutCellImpFunc.H"
 #include "cutCellIso.H"
@@ -175,8 +175,8 @@ int main(int argc, char *argv[])
 
     Random rndCentre(1234567);
 
-    autoPtr<reconstructionSchemes> surf =
-        reconstructionSchemes::New(alpha1,phi,U,fvSolutionDict);
+    autoPtr<interfaceRepresentation> surf =
+        interfaceRepresentation::New(alpha1,phi,U,fvSolutionDict);
     surfaceForces surfForces(alpha1,phi,U,transportProperties);
 
     //    label nIter = 100;

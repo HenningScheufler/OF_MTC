@@ -128,7 +128,7 @@ public:
 
     // Constructors
 
-        //- Construct from components
+        //- Construct from dictionary
         heightFunction
         (
             const dictionary& dict,

@@ -47,15 +47,18 @@ Foam::surfaceForces::surfaceForces
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
 
+
 Foam::tmp<Foam::surfaceScalarField> Foam::surfaceForces::surfaceTensionForce()
 {
     return surfTenForceModel_->surfaceTensionForce();
 }
 
+
 Foam::tmp<Foam::surfaceScalarField> Foam::surfaceForces::accelerationForce()
 {
     return accModel_->accelerationForce();
 }
+
 
 Foam::scalar Foam::surfaceForces::capillaryDt
 (
@@ -78,6 +81,7 @@ Foam::scalar Foam::surfaceForces::capillaryDt
 
     return dt.value();
 }
+
 
 Foam::scalar Foam::surfaceForces::capillaryDt
 (

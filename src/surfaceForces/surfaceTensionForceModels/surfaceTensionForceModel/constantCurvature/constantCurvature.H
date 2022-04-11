@@ -84,7 +84,7 @@ public:
 
     // Constructors
 
-        //- Construct from components
+        //- Construct from dictionary
         constantCurvature
         (
             const dictionary& dict,

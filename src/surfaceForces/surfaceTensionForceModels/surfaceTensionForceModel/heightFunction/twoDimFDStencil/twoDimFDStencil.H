@@ -116,7 +116,7 @@ public:
         //- Construct from fvMesh and globalIndex
         twoDimFDStencil(const bool twoDim,const label dir,const label gblcelli);
 
-        //- Construct from components
+        //- Construct from dictionary
         twoDimFDStencil
         (
             const bool twoDim,
